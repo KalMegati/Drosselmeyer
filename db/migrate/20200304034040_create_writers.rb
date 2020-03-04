@@ -4,7 +4,7 @@ class CreateWriters < ActiveRecord::Migration[6.0]
       t.string :handle
       t.string :password
       t.string :icon
-      t.boolean :admin, default: false
+      t.integer :aesthetic, default: nil
 
       t.timestamps
     end

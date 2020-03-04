@@ -1,3 +1,6 @@
-class Character < ApplicationRecord
-    belongs_to :writer
+class Character < Entity
+    # belongs_to :writer
+    # belongs_to :setting
+    belongs_to :faction
+
 end

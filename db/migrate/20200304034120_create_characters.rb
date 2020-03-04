@@ -5,7 +5,10 @@ class CreateCharacters < ActiveRecord::Migration[6.0]
       t.string :blurb
       t.text :story
       t.string :image
-      
+      t.belongs_to :setting
+      t.belongs_to :writer
+      t.belongs_to :faction
+
       t.timestamps
     end
   end

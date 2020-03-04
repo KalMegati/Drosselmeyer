@@ -1,1 +1,29 @@
-<%= @writer.icon %>
+
+<h1><%=@writer.handle%></h1>
+~<label><i><%=@writer.icon%></i><label>
+<br><br>
+Characters:
+
+<ul>
+<% @writer.characters.each do |character| %>
+    <li><a href="/characters/<%= character.id %>"><%= character.name %></a></li>
+<% end %>
+</ul>
+
+<br>
+
+Locations:
+
+<ul>
+<% @writer.locations.each do |location| %>
+    <li><a href="/locations/<%= location.id %>"><%= location.name %></a></li>
+<% end %>
+</ul>
+
+<br><br>
+
+<% if session[:writer_id] and session[:writer_id] == @writer.id %>
+    <form action="/writers/<%= @writer.id %>/edit" method="get">
+        <input type="submit" value="Edit Information">
+    </form>
+<% end%>

@@ -1,6 +1,7 @@
 class Faction < Entity
-    # belongs_to :writer
-    # belongs_to :setting
+    self.table_name=("factions")
+    belongs_to :writer
+    belongs_to :setting
     has_many :characters
     has_many :locations
 

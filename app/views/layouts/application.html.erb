@@ -10,6 +10,33 @@
   </head>
 
   <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <a class="navbar-brand" href="<%= root_url %>" >Home</a>
+          <% if session[:writer_id] and Writer.find_by(id: session[:writer_id]) %>
+            <a class="navbar-brand" href="<%= writer_path(session[:writer_id]) %>" ><%= Writer.find(session[:writer_id]).handle %></a>
+          <% else %>
+            <a class="navbar-brand" href="<%= new_writer_path %>" >Sign Up</a>
+            <a class="navbar-brand" href="<%= signin_path %>" >Sign In</a>
+          <% end %>       
+          <a class="navbar-brand" href="<%= signout_path %>" >Sign Out</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
     <%= yield %>
   </body>
 

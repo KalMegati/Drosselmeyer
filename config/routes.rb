@@ -5,4 +5,14 @@ Rails.application.routes.draw do
 
   resources :settings
 
+  resources :sessions, only: [:new, :create]
+
+  get '/signup', to: 'writers#new'
+
+  get '/signin', to: 'sessions#new'
+
+  get '/signout', to: 'sessions#signout'
+
+  root to: 'application#welcome'
+
 end

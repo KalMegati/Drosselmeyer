@@ -14,8 +14,12 @@ class WritersController < ApplicationController
 
     def create
         @writer = Writer.new(writer_params)
-        @writer.save
-        redirect_to writer_path(@writer)
+        if @writer.save
+            session[:writer_id] = @writer.id
+            redirect_to writer_path(@writer)
+        else
+            redirect_to writers_path
+        end
     end
 
     def edit

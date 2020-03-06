@@ -40,12 +40,4 @@ class EntitiesController < ApplicationController
         self.send(self.entity_class.to_s.downcase+"_params")
     end
 
-    def entity_path(id)
-        self.send(entity_class.to_s.downcase+"_path", id)
-    end
-
-    def entities_path
-        self.send(entity_class.to_s.downcase+"s_path")
-    end
-
 end

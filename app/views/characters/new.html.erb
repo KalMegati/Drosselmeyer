@@ -1,0 +1,9 @@
+<%= form_for(@entity) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+    <%= f.label :blurb %>
+    <%= f.text_field :blurb %><br>
+    <%= f.label :story %>
+    <%= f.text_area :story %><br>  
+    <%= f.submit %>  
+<% end %>

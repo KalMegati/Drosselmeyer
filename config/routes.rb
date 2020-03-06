@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create]
 
+  resources :characters
+
   get '/signup', to: 'writers#new'
 
   get '/signin', to: 'sessions#new'

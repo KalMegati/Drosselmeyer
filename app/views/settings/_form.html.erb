@@ -1,0 +1,10 @@
+<%= form_for(@setting) do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %><br>
+    <%= f.label :genre %>
+    <%= f.text_field :genre %><br>
+    <%= f.label :faction_list %>
+    <%= f.text_field :faction_list %><br>  
+    <input type="hidden" id="writer" name="setting[writer_id]" value=<%= session[:writer_id] %>>
+    <%= f.submit %>  
+<% end %>

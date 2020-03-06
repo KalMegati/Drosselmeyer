@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 2020_03_04_151748) do
     t.integer "faction_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["faction_id"], name: "index_characters_on_faction_id"
+    t.index ["setting_id"], name: "index_characters_on_setting_id"
+    t.index ["writer_id"], name: "index_characters_on_writer_id"
   end
 
   create_table "factions", force: :cascade do |t|
@@ -33,6 +36,8 @@ ActiveRecord::Schema.define(version: 2020_03_04_151748) do
     t.integer "writer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["setting_id"], name: "index_factions_on_setting_id"
+    t.index ["writer_id"], name: "index_factions_on_writer_id"
   end
 
   create_table "locations", force: :cascade do |t|

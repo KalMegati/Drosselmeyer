@@ -4,8 +4,8 @@ class Setting < ApplicationRecord
     has_many :locations
     has_many :factions
     has_many :confidants, through: :locations, source: :writers
-    has_many :companions, through: :characters, sorce: writers
-    has_many :collaborators, through: :factions, source: writers
+    has_many :companions, through: :characters, source: :writers
+    has_many :collaborators, through: :factions, source: :writers
 
     def cowriters
         collab = self.confidants + self.companions + self.collaborators

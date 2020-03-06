@@ -3,11 +3,11 @@ Rails.application.routes.draw do
 
   resources :writers
 
-  resources :settings
+  resources :settings do
+    resources :characters
+  end
 
   resources :sessions, only: [:new, :create]
-
-  resources :characters
 
   get '/signup', to: 'writers#new'
 

@@ -5,9 +5,9 @@ class EntitiesController < ApplicationController
     end 
 
     def create
-        @entity = entity_class.new(paramify)
-        binding.pry
-        redirect_to root_path
+        @entity = entity_class.new(entity_params)
+        @entity.save
+        redirect_to setting_entity_path(@entity.setting, @entity)
     end 
 
     def index 
@@ -15,7 +15,7 @@ class EntitiesController < ApplicationController
     end
 
     def show
-
+        @entity = entity_class.find(params[:id])
     end
 
     def edit
@@ -36,7 +36,7 @@ class EntitiesController < ApplicationController
         eval(entity.singularize)
     end
 
-    def paramify #to get strong params
+    def entity_params #to get strong params
         self.send(self.entity_class.to_s.downcase+"_params")
     end
 

@@ -1,1 +1,3 @@
-<%= @setting.faction_list %>
+<ul><% @setting.factions.each do |faction| %>
+    <%= link_to faction.name, setting_faction_path(@setting, faction) %> ~ <%= faction.blurb %><br>
+<% end %></ul>

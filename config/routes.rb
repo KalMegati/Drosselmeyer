@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :settings do
     resources :characters
+    resources :factions
   end
 
   resources :sessions, only: [:new, :create]

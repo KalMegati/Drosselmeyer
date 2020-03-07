@@ -1,0 +1,20 @@
+<h1><%=@entity.name%></h1>
+~ <label><i><%=@entity.blurb%></i></label>
+<br><br><br>
+
+Affiliates:
+<br>
+<ul>
+<% @entity.characters.each do |character| %>
+    <li><%= link_to character.name, character_path(character) %> ~ <%=character.blurb%></li>
+<% end %>
+</ul>
+<br><br>
+
+~ <a href="/writers/<%= @entity.writer.id%>"><i><%= @entity.writer.icon %></i></a>
+
+<% if session[:writer_id] and session[:writer_id] == @entity.writer.id %>
+    <form action="/entitys/<%= @entity.id %>/edit" method="get">
+        <input type="submit" value="Edit entity">
+    </form>
+<% end %>

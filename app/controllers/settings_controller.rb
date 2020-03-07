@@ -10,6 +10,9 @@ class SettingsController < ApplicationController
 
     def new
         @setting = Setting.new
+        @setting.factions.build(name: "Neutral")
+        @setting.factions.build(name: "Disputed")
+        @setting.factions.build
     end
 
     def create
@@ -18,6 +21,7 @@ class SettingsController < ApplicationController
         if @setting.save
             redirect_to setting_path(@setting)
         else
+            binding.pry
             redirect_to settings_path
         end
     end
@@ -40,7 +44,9 @@ class SettingsController < ApplicationController
     private
 
     def setting_params
-        params.require('setting').permit(:title, :genre, :faction_list, :writer_id)
+        params.require('setting').permit(:title, :genre, :blurb, :story, :writer_id, factions_attributes: [
+            :name, :blurb, :story, :writer_id
+        ])
     end
 
 end

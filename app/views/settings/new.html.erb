@@ -1,3 +1,37 @@
 New Setting
 
-<%= render 'form' %>
+<%= form_for(@setting) do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %><br>
+    <%= f.label :genre %>
+    <%= f.text_field :genre %><br> 
+    <%= f.label :high_concept %>
+    <%= f.text_field :high_concept %><br>
+    <%= f.label :story %>
+    <%= f.text_field :story %><br> 
+    <input type="hidden" id="writer" name="setting[writer_id]" value=<%= session[:writer_id] %>>
+
+    <br>Factions<br>
+    |<br>
+
+    <%= f.fields_for :factions do |fact| %>
+        
+        <%= fact.label :name %>
+        <%= fact.text_field :name %><br>
+     
+        <%= fact.label :blurb %>
+        <%= fact.text_field :blurb %><br>
+     
+        <%= fact.label :story %>
+        <%= fact.text_area :story %><br>
+
+        <%= fact.hidden_field :writer_id, :value => session[:writer_id] %>
+
+
+
+        |<br>
+
+    <% end %>
+
+    <%= f.submit %>  
+<% end %>

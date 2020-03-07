@@ -6,7 +6,8 @@ class SessionsController < ApplicationController
 
     def create
         @writer = Writer.find_by(handle: login_params[:handle])
-        if @writer.password == login_params[:password]
+        binding.pry
+        if @writer and @writer.password == login_params[:password]
             session[:writer_id] = @writer.id
             redirect_to writer_path(@writer)
         else

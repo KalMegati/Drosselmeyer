@@ -1,4 +1,4 @@
-<%= form_for(@writer) do |f| %>
+<%= form_for(@writer, url: '/signin') do |f| %>
     <%= f.label :handle %>
     <%= f.text_field :handle %><br>
     <%= f.label :password %>

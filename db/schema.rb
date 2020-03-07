@@ -58,7 +58,8 @@ ActiveRecord::Schema.define(version: 2020_03_04_151748) do
   create_table "settings", force: :cascade do |t|
     t.string "title"
     t.string "genre"
-    t.text "faction_list"
+    t.string "high_concept"
+    t.string "story"
     t.integer "aesthetic"
     t.integer "writer_id"
     t.datetime "created_at", precision: 6, null: false

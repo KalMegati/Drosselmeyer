@@ -17,11 +17,9 @@ class SettingsController < ApplicationController
 
     def create
         @setting = Setting.new(setting_params)
-        binding.pry
         if @setting.save
             redirect_to setting_path(@setting)
         else
-            binding.pry
             redirect_to settings_path
         end
     end
@@ -33,18 +31,21 @@ class SettingsController < ApplicationController
     def update
         @setting = Setting.find(params[:id])
         @setting.attributes=(setting_params)
+        binding.pry
         @setting.save
         redirect_to setting_path(@setting)
     end
 
     def destroy
         @setting = Setting.find(params[:id])
+        @setting.destroy
+        redirect_to settings_path
     end
 
     private
 
     def setting_params
-        params.require('setting').permit(:title, :genre, :blurb, :story, :writer_id, factions_attributes: [
+        params.require('setting').permit(:title, :genre, :high_concept, :story, :writer_id, factions_attributes: [
             :name, :blurb, :story, :writer_id
         ])
     end

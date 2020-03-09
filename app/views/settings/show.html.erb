@@ -1,9 +1,37 @@
+<h1><%=@setting.title%></h1>
+~<label><i><%=@setting.high_concept%></i><label>
+<br><br>
+
+Factions:
+
 <ul><% @setting.factions.each do |faction| %>
-    <%= link_to faction.name, setting_faction_path(@setting, faction) %> ~ <%= faction.blurb %><br>
+    <li><%= link_to faction.name, setting_faction_path(@setting, faction) %> ~ <%= faction.blurb %></li>
 <% end %></ul>
+
+Characters:
+
+<ul>
+<% @setting.characters.each do |character| %>
+    <li><%= link_to character.name, setting_character_path(@setting, character) %> ~ <%= character.blurb %></li>
+<% end %>
+</ul>
+
+Locations:
+
+<ul>
+<% @setting.locations.each do |location| %>
+    <li><%= link_to location.name, setting_location_path(@setting, location) %> ~ <%= location.blurb %></li>
+<% end %>
+</ul>
+
+<br><br>
 
 Add Factions
 
 Add Characters
 
 Add Locations
+
+<% if session[:writer_id] and session[:writer_id] == @setting.writer_id %>
+    <%= link_to "Edit Setting", edit_setting_path(@setting.id) %>
+<% end%>

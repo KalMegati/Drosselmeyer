@@ -1,3 +1,15 @@
 Edit Setting
 
-<%= render 'form' %>
+<%= form_for(@setting) do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %><br>
+    <%= f.label :genre %>
+    <%= f.text_field :genre %><br> 
+    <%= f.label :high_concept %>
+    <%= f.text_field :high_concept %><br>
+    <%= f.label :story %>
+    <%= f.text_field :story %><br> 
+    <%= f.submit %>  
+<% end %>
+
+<%= button_to "Destroy Setting", setting_path(@setting), method: :delete %>

@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  resources :writers
+  resources :writers do
+    resources :characters
+  end
 
   resources :settings do
     resources :characters
     resources :factions
+    resources :locations
   end
 
   resources :sessions, only: [:new, :create]

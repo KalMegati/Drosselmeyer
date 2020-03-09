@@ -5,4 +5,6 @@ class Character < Entity
     belongs_to :setting
     belongs_to :faction
 
+    scope :of_type, ->(archetype) { where("archetype = ?", archetype) }
+
 end

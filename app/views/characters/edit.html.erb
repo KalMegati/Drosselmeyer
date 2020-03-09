@@ -1,0 +1,5 @@
+Edit Character
+
+<%= render partial: 'form', locals: {path: setting_character_path(params[:setting_id], @entity)} %>
+
+<%= button_to "Destroy Character", setting_character_path(params[:setting_id], @entity), method: :delete %>

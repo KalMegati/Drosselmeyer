@@ -1,0 +1,11 @@
+<%= form_for(@entity, url: path) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+    <%= f.label :blurb %>
+    <%= f.text_field :blurb %><br>
+    <%= f.label :story %>
+    <%= f.text_area :story %><br>  
+    <input type="hidden" id="writer" name="character[writer_id]" value=<%= session[:writer_id] %>>
+    <input type="hidden" id="setting" name="character[setting_id]" value=<%= params[:setting_id] %>>
+    <%= f.submit %>  
+<% end %>

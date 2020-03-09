@@ -11,7 +11,7 @@ class EntitiesController < ApplicationController
     end 
 
     def index 
-
+        @entities = entity_class.all
     end
 
     def show
@@ -19,11 +19,14 @@ class EntitiesController < ApplicationController
     end
 
     def edit
-
+        @entity = entity_class.find(params[:id])
     end
 
     def update
-
+        @entity = entity_class.find(params[:id])
+        @entity.attributes=(entity_params)
+        @entity.save
+        redirect_to setting_entity_path(@entity.setting, @entity)
     end
 
     def destroy

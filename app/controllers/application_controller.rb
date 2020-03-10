@@ -16,4 +16,8 @@ class ApplicationController < ActionController::Base
         self.send("setting_" + entity_class.to_s.downcase + "_path", set, ent)
     end
 
+    def setting_entities_path(set)
+        self.send("setting_" + entity_class.to_s.downcase + "s_path", set)
+    end
+
 end

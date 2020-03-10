@@ -5,6 +5,7 @@
     <%= f.text_field :blurb %><br>
     <%= f.label :story %>
     <%= f.text_area :story %><br>  
+    <%= f.select :faction_id, Setting.find(params[:setting_id]).factions.all.collect {|fact| [ fact.name, fact.id ] } %>
     <input type="hidden" id="writer" name="character[writer_id]" value=<%= session[:writer_id] %>>
     <input type="hidden" id="setting" name="character[setting_id]" value=<%= params[:setting_id] %>>
     <%= f.submit %>  

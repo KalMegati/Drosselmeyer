@@ -1,1 +1,21 @@
-WILD
+<h1><%=@entity.name%></h1>
+~ <label><i><%=@entity.blurb%></i></label>
+<br>
+<br>
+Setting: <%= link_to @entity.setting.title, setting_path(@entity.setting) %>
+<br>
+<br>
+Faction: <%= link_to @entity.faction.name, setting_faction_path(@entity.setting, @entity.faction) %>
+<br>
+<br>
+Story: <br>
+
+<%= @entity.story %>
+<br>
+<br>
+
+~ <a href="/writers/<%= @entity.writer.id%>"><i><%= @entity.writer.icon %></i></a>
+
+<% if session[:writer_id] and session[:writer_id] == @entity.writer.id %>
+    <%= link_to "Edit Character", edit_setting_character_path(@entity.setting, @entity) %>
+<% end %>

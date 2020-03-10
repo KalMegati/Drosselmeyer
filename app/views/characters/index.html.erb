@@ -1,0 +1,7 @@
+<h1>Characters</h1>
+
+<ul>
+<% @entities.each do |character| %>
+    <li><%= link_to character.name, setting_character_path(character.setting, character) %> ~ <%=character.blurb%> </li>
+<% end %>
+</ul>

@@ -10,8 +10,8 @@ class EntitiesController < ApplicationController
         redirect_to setting_entity_path(@entity.setting, @entity)
     end 
 
-    def index 
-        @entities = entity_class.all
+    def index
+        @entities = entity_class.of_setting(params[:setting_id])
     end
 
     def show
@@ -30,7 +30,9 @@ class EntitiesController < ApplicationController
     end
 
     def destroy
-
+        @entity = entity_class.find(params[:id])
+        @entity.destroy
+        redirect_to setting_entities_path(params[:id])
     end
 
     def entity_class #to get the correct type of Entity as necessary

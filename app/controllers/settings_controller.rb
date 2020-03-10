@@ -31,7 +31,6 @@ class SettingsController < ApplicationController
     def update
         @setting = Setting.find(params[:id])
         @setting.attributes=(setting_params)
-        binding.pry
         @setting.save
         redirect_to setting_path(@setting)
     end

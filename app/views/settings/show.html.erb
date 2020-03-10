@@ -2,6 +2,16 @@
 ~<label><i><%=@setting.high_concept%></i><label>
 <br><br>
 
+GENRE: <%= @setting.genre %><br>
+WRITER: <%= link_to @setting.writer.icon, writer_path(@setting.writer) %><br>
+STORY: <br>
+
+<%= @setting.story %>
+
+<br><br>
+
+Filter by Collaborator<br>
+
 Factions:
 
 <ul><% @setting.factions.each do |faction| %>

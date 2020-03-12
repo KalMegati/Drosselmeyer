@@ -2,11 +2,11 @@
 ~ <label><i><%=@entity.blurb%></i></label>
 <br><br><br>
 
-Affiliates:
+Members:
 <br>
 <ul>
 <% @entity.characters.each do |character| %>
-    <li><%= link_to character.name, character_path(character) %> ~ <%=character.blurb%></li>
+    <li><%= link_to character.name, setting_character_path(character.setting, character) %> ~ <%=character.blurb%></li>
 <% end %>
 </ul>
 <br><br>
@@ -14,7 +14,5 @@ Affiliates:
 ~ <a href="/writers/<%= @entity.writer.id%>"><i><%= @entity.writer.icon %></i></a>
 
 <% if session[:writer_id] and session[:writer_id] == @entity.writer.id %>
-    <form action="/entitys/<%= @entity.id %>/edit" method="get">
-        <input type="submit" value="Edit entity">
-    </form>
+<%= link_to "Edit Faction", edit_setting_faction_path(@entity.setting, @entity) %>
 <% end %>

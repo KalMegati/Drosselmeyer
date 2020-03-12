@@ -11,7 +11,8 @@ class EntitiesController < ApplicationController
     end 
 
     def index
-        @entities = entity_class.of_setting(params[:setting_id])
+        @entity_class = entity_class
+        @entities = Setting.find(params[:setting_id]).entities(@entity_class)
     end
 
     def show
@@ -33,16 +34,6 @@ class EntitiesController < ApplicationController
         @entity = entity_class.find(params[:id])
         @entity.destroy
         redirect_to setting_entities_path(params[:id])
-    end
-
-    def entity_class #to get the correct type of Entity as necessary
-        entity = self.class.to_s
-        entity.slice!("Controller")
-        eval(entity.singularize)
-    end
-
-    def entity_params #to get strong params
-        self.send(self.entity_class.to_s.downcase+"_params")
     end
 
 end

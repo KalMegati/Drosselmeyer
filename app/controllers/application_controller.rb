@@ -20,4 +20,14 @@ class ApplicationController < ActionController::Base
         self.send("setting_" + entity_class.to_s.downcase + "s_path", set)
     end
 
+    def entity_class #to get the correct type of Entity as necessary
+        entity = self.class.to_s
+        entity.slice!("Controller")
+        eval(entity.singularize)
+    end
+
+    def entity_params #to get strong params
+        self.send(self.entity_class.to_s.downcase+"_params")
+    end
+
 end

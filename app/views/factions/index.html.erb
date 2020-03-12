@@ -1,0 +1,7 @@
+<h1>Factions</h1>
+
+<ul>
+<% @entities.each do |faction| %>
+    <li><%= link_to faction.name, setting_faction_path(faction.setting, faction) %> ~ <%=faction.blurb%> </li>
+<% end %>
+</ul>

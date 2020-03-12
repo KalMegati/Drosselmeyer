@@ -40,7 +40,7 @@ class WritersController < ApplicationController
     private
 
     def writer_params
-        params.require('writer').permit(:handle, :password, :icon)
+        params.require('writer').permit(:handle, :password, :password_confirmation, :icon)
     end
 
 end

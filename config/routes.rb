@@ -23,4 +23,8 @@ Rails.application.routes.draw do
 
   root to: 'application#welcome'
 
+  post '/auth/:provider/callback', to: 'sessions#create'
+
+  get '/auth/:provider/callback', to: 'sessions#create'
+
 end

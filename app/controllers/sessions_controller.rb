@@ -7,12 +7,12 @@ class SessionsController < ApplicationController
     end
 
     def create
-        if params["provider"] == "developer"
-            if @writer = Writer.find_by(handle: params[:name])
+        if params["provider"] == "github"
+            if @writer = Writer.find_by(handle: "#{omni_params[:nickname]}@github")
                 session[:writer_id] = @writer.id
                 redirect_to writer_path(@writer)
             else
-                @writer = Writer.new( handle: params[:name], password: rand.to_s, icon: rand(100..999).to_s )
+                @writer = Writer.new(handle: "#{omni_params[:nickname]}@github", password: rand.to_s, icon: rand(100..999).to_s )
                 @writer.save
                 session[:writer_id] = @writer.id
                 redirect_to writer_path(@writer)
@@ -37,6 +37,10 @@ class SessionsController < ApplicationController
 
     def login_params
         params.require("writer").permit("handle", "password")
+    end
+
+    def omni_params
+        request.env['omniauth.auth']['info']
     end
 
 end

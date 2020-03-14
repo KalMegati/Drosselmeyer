@@ -1,7 +1,7 @@
 class WritersController < ApplicationController
 
     def index
-        @writers = Writer.all
+        @writers = Writer.all.sort_by { |writer| writer.icon }
     end
 
     def show
@@ -18,7 +18,7 @@ class WritersController < ApplicationController
             session[:writer_id] = @writer.id
             redirect_to writer_path(@writer)
         else
-            redirect_to writers_path
+            render :new
         end
     end
 

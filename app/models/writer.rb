@@ -6,4 +6,7 @@ class Writer < ApplicationRecord
 
     has_secure_password
 
+    validates_uniqueness_of :handle, :password_digest, :icon
+    validates_presence_of :handle, :icon
+
 end

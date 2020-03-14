@@ -10,18 +10,18 @@ STORY: <br>
 
 <br><br>
 
-Filter by Collaborator<br>
+<!-- Filter by Collaborator<br> -->
 
 Factions:
 
-<ul><% @setting.factions.each do |faction| %>
+<ul><% @setting.factions.important.each do |faction| %>
     <li><%= link_to faction.name, setting_faction_path(@setting, faction) %> ~ <%= faction.blurb %></li>
 <% end %></ul>
 
 Characters:
 
 <ul>
-<% @setting.characters.each do |character| %>
+<% @setting.characters.important.each do |character| %>
     <li><%= link_to character.name, setting_character_path(@setting, character) %> ~ <%= character.blurb %></li>
 <% end %>
 </ul>
@@ -29,7 +29,7 @@ Characters:
 Locations:
 
 <ul>
-<% @setting.locations.each do |location| %>
+<% @setting.locations.important.each do |location| %>
     <li><%= link_to location.name, setting_location_path(@setting, location) %> ~ <%= location.blurb %></li>
 <% end %>
 </ul>

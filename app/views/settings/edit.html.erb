@@ -13,3 +13,5 @@ Edit Setting
 <% end %>
 
 <%= button_to "Destroy Setting", setting_path(@setting), method: :delete %>
+
+<%= render partial: 'application/errors', locals: {entity: @setting} %>

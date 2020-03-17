@@ -1,5 +1,8 @@
 class EntitiesController < ApplicationController
 
+    before_action :require_writer, only: :new
+    before_action :verify_writer, only: :edit
+
     def new
         @entity = entity_class.new
     end 

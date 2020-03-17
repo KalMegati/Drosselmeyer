@@ -27,4 +27,8 @@ Rails.application.routes.draw do
 
   get '/auth/:provider/callback', to: 'sessions#create'
 
+  get '/hacker' => 'application#hacker', as: :hacker
+
+  get '/faker' => 'application#faker', as: :faker  
+
 end

@@ -27,11 +27,11 @@ New Setting
 
         <%= fact.hidden_field :writer_id, :value => session[:writer_id] %>
 
-
-
         |<br>
 
     <% end %>
 
     <%= f.submit %>  
 <% end %>
+
+<%= render partial: 'application/errors', locals: {entity: @setting} %>

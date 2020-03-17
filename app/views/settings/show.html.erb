@@ -1,29 +1,29 @@
 <h1><%=@setting.title%></h1>
-~<label><i><%=@setting.high_concept%></i><label>
+~<label><i><%=@setting.high_concept%></i></label>
 <br><br>
 
 GENRE: <%= @setting.genre %><br>
 WRITER: <%= link_to @setting.writer.icon, writer_path(@setting.writer) %><br>
-STORY: <br>
+STORY: 
 
-<%= @setting.story %>
+<p><%= @setting.story %><p>
 
-<br><br>
+<%= link_to "Factions", setting_factions_path(@setting) %>
 
-<!-- Filter by Collaborator<br> -->
-
-Factions:
-
-<ul><% @setting.factions.important.each do |faction| %>
+<ul>
+<% @setting.factions.important.each do |faction| %>
     <li><%= link_to faction.name, setting_faction_path(@setting, faction) %> ~ <%= faction.blurb %></li>
-<% end %></ul>
+<% end %>
+<li><%= link_to "add New Faction", new_setting_faction_path(@setting) %></li>
+</ul>
 
-Characters:
+<%= link_to "Characters", setting_characters_path(@setting) %>
 
 <ul>
 <% @setting.characters.important.each do |character| %>
     <li><%= link_to character.name, setting_character_path(@setting, character) %> ~ <%= character.blurb %></li>
 <% end %>
+<li><%= link_to "add New Character", new_setting_character_path(@setting) %></li>
 </ul>
 
 Locations:
@@ -34,14 +34,16 @@ Locations:
 <% end %>
 </ul>
 
+Cowriters:
+
+<ul>
+<% @setting.cowriters.each do |writer| %>
+    <li><%= writer.icon %> ~ <%= link_to writer.handle, writer_path(writer) %></li>
+<% end %>
+</ul>
+
 <br><br>
 
-Add Factions
-
-Add Characters
-
-Add Locations
-
 <% if session[:writer_id] and session[:writer_id] == @setting.writer_id %>
-    <%= link_to "Edit Setting", edit_setting_path(@setting.id) %>
-<% end%>
+    <%= button_to "Edit Setting", edit_setting_path(@setting), method: :get %>
+<% end %>

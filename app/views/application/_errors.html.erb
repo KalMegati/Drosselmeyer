@@ -1,0 +1,8 @@
+<% unless entity.errors.empty? %>
+ERRORS
+    <ul><% entity.errors.messages.keys.each do |field| %>
+        <% if entity.errors.messages[field][0] %>
+            <li><%= "#{field.to_s.capitalize} #{entity.errors.messages[field].last}." %></li>
+        <% end %>
+    <% end %></ul>
+<% end %>

@@ -1,5 +1,8 @@
 class SettingsController < ApplicationController
 
+    before_action :require_writer, only: :new
+    before_action :verify_writer, only: :edit
+
     def index
         @settings = Setting.all
     end
@@ -17,6 +20,7 @@ class SettingsController < ApplicationController
 
     def create
         @setting = Setting.new(setting_params)
+        binding.pry
         if @setting.save
             redirect_to setting_path(@setting)
         else
@@ -48,5 +52,7 @@ class SettingsController < ApplicationController
             :name, :blurb, :story, :writer_id
         ])
     end
+
+    
 
 end

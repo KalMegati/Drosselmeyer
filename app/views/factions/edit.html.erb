@@ -1,3 +1,5 @@
 Edit Faction
 
 <%= render partial: 'form', locals: {path: setting_faction_path(params[:setting_id], @entity)} %>
+
+<%= button_to "Destroy Faction", setting_faction_path(params[:setting_id], @entity), method: :delete %>

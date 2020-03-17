@@ -1,5 +1,13 @@
 class WritersController < ApplicationController
 
+    before_action :verify_identity, only: :edit
+
+    def verify_identity
+        unless logged_in? and current_writer == Writer.find(params[:id])
+            redirect_to faker_path
+        end
+    end
+
     def index
         @writers = Writer.all.sort_by { |writer| writer.icon }
     end
@@ -29,8 +37,11 @@ class WritersController < ApplicationController
     def update
         @writer = Writer.find(params[:id])
         @writer.attributes=(writer_params)
-        @writer.save
-        redirect_to writer_path(@writer)
+        if @writer.save
+            redirect_to writer_path(@writer)
+        else
+            render :edit
+        end
     end
 
     def destroy

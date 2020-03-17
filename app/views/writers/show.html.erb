@@ -6,17 +6,17 @@ Characters:
 
 <ul>
 <% @writer.characters.each do |character| %>
-    <li><a href="/characters/<%= character.id %>"><%= character.name %></a></li>
+    <li><%= link_to character.name, setting_character_path(character.setting, character) %> ~ <%= character.blurb %></li>
 <% end %>
 </ul>
 
 <br>
 
-Locations:
+Factions:
 
 <ul>
-<% @writer.locations.each do |location| %>
-    <li><a href="/locations/<%= location.id %>"><%= location.name %></a></li>
+<% @writer.factions.each do |faction| %>
+    <li><%= link_to faction.name, setting_faction_path(faction.setting, faction) %> ~ <%= faction.blurb %></li>
 <% end %>
 </ul>
 

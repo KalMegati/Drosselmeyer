@@ -8,11 +8,4 @@
     <%= f.submit %>  
 <% end %>
 
-<% unless @writer.errors.empty? %>
-ERRORS
-    <ul><% @writer.errors.messages.keys.each do |field| %>
-        <% if @writer.errors.messages[field][0] %>
-            <li><%= "That #{field} #{@writer.errors.messages[field].last}." %></li>
-        <% end %>
-    <% end %></ul>
-<% end %>
+<%= render partial: 'application/errors', locals: {entity: @writer} %>

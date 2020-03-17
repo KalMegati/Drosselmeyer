@@ -1,3 +1,5 @@
+<h1>Writers</h1>
+
 <ul><% @writers.each do |writer| %>
     <li><%= link_to writer.icon, writer_path(writer) %> ~ <%= writer.handle %></li>
 <% end %></ul>

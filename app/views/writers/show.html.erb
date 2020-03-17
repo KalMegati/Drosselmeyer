@@ -1,7 +1,17 @@
-
 <h1><%=@writer.handle%></h1>
 ~<label><i><%=@writer.icon%></i></label>
 <br><br>
+
+Settings:
+
+<ul>
+<% @writer.settings.each do |setting| %>
+    <li><%= link_to setting.title, setting_path(setting) %> ~ <%= setting.high_concept %></li>
+<% end %>
+</ul>
+
+<br>
+
 Characters:
 
 <ul>

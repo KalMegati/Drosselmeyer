@@ -5,6 +5,9 @@ class Faction < Entity
     has_many :characters
     has_many :locations
 
+    validates_presence_of :name, :blurb
+    validates_uniqueness_of :name, :blurb
+
     def assets
         self.characters + self.locations
     end

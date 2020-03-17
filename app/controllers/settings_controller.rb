@@ -20,7 +20,6 @@ class SettingsController < ApplicationController
 
     def create
         @setting = Setting.new(setting_params)
-        binding.pry
         if @setting.save
             redirect_to setting_path(@setting)
         else

@@ -26,14 +26,6 @@ STORY:
 <li><%= link_to "add New Character", new_setting_character_path(@setting) %></li>
 </ul>
 
-Locations:
-
-<ul>
-<% @setting.locations.important.each do |location| %>
-    <li><%= link_to location.name, setting_location_path(@setting, location) %> ~ <%= location.blurb %></li>
-<% end %>
-</ul>
-
 Cowriters:
 
 <ul>

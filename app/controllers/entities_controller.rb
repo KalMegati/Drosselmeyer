@@ -9,8 +9,11 @@ class EntitiesController < ApplicationController
 
     def create
         @entity = entity_class.new(entity_params)
-        @entity.save
-        redirect_to setting_entity_path(@entity.setting, @entity)
+        if @entity.save
+            redirect_to setting_entity_path(@entity.setting, @entity)
+        else
+            render :new
+        end
     end 
 
     def index
@@ -29,14 +32,17 @@ class EntitiesController < ApplicationController
     def update
         @entity = entity_class.find(params[:id])
         @entity.attributes=(entity_params)
-        @entity.save
-        redirect_to setting_entity_path(@entity.setting, @entity)
+        if @entity.save
+            redirect_to setting_entity_path(@entity.setting, @entity)
+        else
+            render :edit
+        end
     end
 
     def destroy
         @entity = entity_class.find(params[:id])
         @entity.destroy
-        redirect_to setting_entities_path(params[:id])
+        redirect_to setting_entities_path(params[:setting_id])
     end
 
 end

@@ -2,6 +2,7 @@
 
 <ul>
 <% @settings.each do |setting| %>
-    <li><%= link_to setting.title, setting_path(setting) %> ~ <%=setting.high_concept%> </li>
+    <li><%= link_to setting.title, setting_path(setting) %> ~ <%=setting.high_concept%></li>
 <% end %>
+    <li><%= link_to "create new setting", new_setting_path %></li>
 </ul>

@@ -1,5 +1,16 @@
 <h1>Settings</h1>
 
+###
+
+<form action=<%=settings_path%> method="get">
+
+<input type="textfield" id="search" name="search" %>>
+<input type="submit">
+
+</form>
+
+###
+
 <ul>
 <% @settings.each do |setting| %>
     <li><%= link_to setting.title, setting_path(setting) %> ~ <%=setting.high_concept%></li>

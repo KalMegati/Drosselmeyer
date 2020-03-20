@@ -4,7 +4,13 @@ class SettingsController < ApplicationController
     before_action :verify_writer, only: :edit
 
     def index
-        @settings = Setting.all
+        if params["search"]
+            setting = Setting.find_by(title: params["search"])
+            @settings = [setting]
+            binding.pry
+        else
+            @settings = Setting.all
+        end
     end
 
     def show
@@ -19,7 +25,9 @@ class SettingsController < ApplicationController
     end
 
     def create
+
         @setting = Setting.new(setting_params)
+        #binding.pry
         if @setting.save
             redirect_to setting_path(@setting)
         else

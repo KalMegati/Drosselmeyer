@@ -14,8 +14,8 @@ Story: <br>
 <br>
 <br>
 
-~ <a href="/writers/<%= @entity.writer.id%>"><i><%= @entity.writer.icon %></i></a>
+~ <%= link_to @entity.writer.icon, writer_path(@entity.writer) %>
 
-<% if session[:writer_id] and session[:writer_id] == @entity.writer.id %>
+<% if logged_in? and current_writer == @entity.writer %>
     <%= link_to "Edit Character", edit_setting_character_path(@entity.setting, @entity) %>
 <% end %>

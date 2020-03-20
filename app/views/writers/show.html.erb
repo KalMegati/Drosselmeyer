@@ -32,8 +32,6 @@ Factions:
 
 <br><br>
 
-<% if session[:writer_id] and session[:writer_id] == @writer.id %>
-    <form action="/writers/<%= @writer.id %>/edit" method="get">
-        <input type="submit" value="Edit Information">
-    </form>
+<% if logged_in? and current_writer == @writer %>
+    <%= button_to "Update Information", edit_writer_path(@writer), method: :get %>
 <% end%>

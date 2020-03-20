@@ -25,7 +25,7 @@ New Setting
         <%= fact.label :story %>
         <%= fact.text_area :story %><br>
 
-        <%= fact.hidden_field :writer_id, :value => session[:writer_id] %>
+        <%= fact.hidden_field :writer_id, :value => current_writer.id %>
 
         |<br>
 

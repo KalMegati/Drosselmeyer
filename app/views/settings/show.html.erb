@@ -36,6 +36,6 @@ Cowriters:
 
 <br><br>
 
-<% if session[:writer_id] and session[:writer_id] == @setting.writer_id %>
+<% if logged_in? and current_writer == @setting.writer %>
     <%= button_to "Edit Setting", edit_setting_path(@setting), method: :get %>
 <% end %>

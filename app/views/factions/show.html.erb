@@ -15,8 +15,8 @@ Members:
 </ul>
 <br><br>
 
-~ <a href="/writers/<%= @entity.writer.id%>"><i><%= @entity.writer.icon %></i></a>
+~ <%= link_to @entity.writer.icon, writer_path(@entity.writer) %>
 
-<% if session[:writer_id] and session[:writer_id] == @entity.writer.id %>
-<%= link_to "Edit Faction", edit_setting_faction_path(@entity.setting, @entity) %>
+<% if logged_in? and current_writer == @entity.writer %>
+    <%= link_to "Edit Faction", edit_setting_faction_path(@entity.setting, @entity) %>
 <% end %>

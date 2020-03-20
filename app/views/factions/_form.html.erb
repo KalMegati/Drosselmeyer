@@ -5,7 +5,7 @@
     <%= f.text_field :blurb %><br>
     <%= f.label :story %>
     <%= f.text_area :story %><br>  
-    <input type="hidden" id="writer" name="faction[writer_id]" value=<%= session[:writer_id] %>>
+    <input type="hidden" id="writer" name="faction[writer_id]" value=<%= current_writer.id %>>
     <input type="hidden" id="setting" name="faction[setting_id]" value=<%= params[:setting_id] %>>
     <br><%= f.submit %><br>
 <% end %>

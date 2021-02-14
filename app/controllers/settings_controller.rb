@@ -7,7 +7,7 @@ class SettingsController < ApplicationController
         if params["search"]
             setting = Setting.find_by(title: params["search"])
             @settings = [setting]
-            binding.pry
+            # binding.pry
         else
             @settings = Setting.all
         end
